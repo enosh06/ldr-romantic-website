@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Future Countdown — set your real reunion/meetup date here!
     // Format: new Date('YYYY-MM-DDTHH:MM:SS') — change this to your actual date 💛
-    const countdownDate = new Date('2026-01-22T00:00:00');
+    const countdownDate = new Date('2027-01-22T00:00:00');
 
     function updateCountdown() {
         const now = new Date().getTime();
