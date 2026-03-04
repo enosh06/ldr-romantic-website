@@ -199,24 +199,17 @@ document.addEventListener('DOMContentLoaded', () => {
         typeWriter();
     }
 
-    // 4. Future Countdown — set your real reunion/meetup date here!
-    // Format: new Date('YYYY-MM-DDTHH:MM:SS') — change this to your actual date 💛
-    const countdownDate = new Date('2027-01-22T00:00:00');
+    // 4. Time Together — counting UP from the day we became one 💛
+    const togetherSince = new Date('2026-01-22T00:00:00');
 
-    function updateCountdown() {
+    function updateTogether() {
         const now = new Date().getTime();
-        const distance = countdownDate - now;
+        const elapsed = now - togetherSince.getTime();
 
-        if (distance <= 0) {
-            // Countdown reached! Show celebration message
-            document.getElementById('countdown').innerHTML = "<p style='font-size:1.5rem;color:#ffc2d1;'>The wait is finally over! 🎉</p>";
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((elapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
 
         document.getElementById('days').innerText = days.toString().padStart(2, '0');
         document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
@@ -224,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    setInterval(updateTogether, 1000);
+    updateTogether();
 
     // 5. Final Surprise Modal & Confetti
     const finalBtn = document.getElementById('final-btn');
