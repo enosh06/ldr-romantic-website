@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love 🤍</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="A romantic space dedicated to my long-distance love. If I can't hold you, let this hold you for me.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Outfit:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- GSAP for smooth animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+  <!-- Background Music (Hidden) -->
+  <audio id="bg-music" loop autoplay>
+    <source src="/ranjha.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Heartbeat Sound (Hidden) -->
+  <audio id="heartbeat-sound">
+    <source src="/heartbeat.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="mute-container">
+    <button id="mute-btn" aria-label="Toggle Music">🎵</button>
+  </div>
+
+  <div id="app">
+    <!-- Hero Section -->
+    <section id="hero" class="fade-in">
+      <div class="hero-content">
+        <h1>If I Can’t Hold You… <br><span class="highlight">Let This Hold You For Me 🤍</span></h1>
+        <p class="subtext">Distance can stop my hands… but it can never stop my love.</p>
+        <button id="touch-me-btn" class="glow-btn">💖 Touch Me</button>
+      </div>
+      <div id="floating-hearts"></div>
+    </section>
+
+    <!-- Virtual Touch Section -->
+    <section id="virtual-touch" class="snap-section">
+      <h2 class="section-title">Virtual Touch Experience</h2>
+
+      <div class="interaction-grid">
+        <!-- Heartbeat -->
+        <div class="touch-card" id="heartbeat-card">
+          <h3>Heartbeat</h3>
+          <button id="heartbeat-btn" class="action-btn">💓 Feel My Heart</button>
+          <p id="heartbeat-msg" class="hidden-msg">This is my heart beating for you.</p>
+        </div>
+
+        <!-- Virtual Hug -->
+        <div class="touch-card" id="hug-card">
+          <h3>Virtual Hug</h3>
+          <button id="hug-btn" class="action-btn">🫂 Hug Me</button>
+          <div id="hug-animation-container"></div>
+          <p id="hug-msg" class="hidden-msg">Close your eyes. I’m right here.</p>
+        </div>
+
+        <!-- Hand on Screen -->
+        <div class="touch-card" id="hand-card">
+          <h3>Hold My Hand</h3>
+          <div class="hand-silhouette-container">
+            <img src="/hand_silhouette.png" alt="Hand Silhouette" id="hand-silhouette">
+            <p class="instruction">Place your hand on the screen...</p>
+          </div>
+          <p id="hand-msg" class="hidden-msg">Our hands may not touch in real life… but our souls always do.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Love Letter Section -->
+    <section id="love-letter">
+      <div class="letter-container">
+        <img src="/envelope.png" alt="Envelope" class="envelope-img">
+        <div class="letter-content" id="typewriter-letter">
+          <!-- Text injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Future Promise Section -->
+    <section id="future">
+      <div class="stars-bg"></div>
+      <div class="future-content">
+        <h2>One Day…</h2>
+        <p>One day, I won’t send you virtual hugs. <br>I’ll hold you for real. <br>And I won’t let go.</p>
+        <div id="countdown">
+          <div class="count-item">
+            <span id="days">00</span>
+            <label>Days</label>
+          </div>
+          <div class="count-item">
+            <span id="hours">00</span>
+            <label>Hours</label>
+          </div>
+          <div class="count-item">
+            <span id="minutes">00</span>
+            <label>Minutes</label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Surprise Section -->
+    <section id="surprise">
+      <button id="final-btn" class="surprise-btn">🎁 Open When You Really Miss Me</button>
+      <div id="final-modal" class="modal hidden">
+        <div class="modal-content">
+          <p>Even if the world keeps us apart physically, nothing can separate what we feel.</p>
+          <p><strong>You are never touchless. You are always loved.</strong></p>
+          <button class="close-modal">🤍 Stay Strong</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
