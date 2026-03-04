@@ -116,12 +116,24 @@ document.addEventListener('DOMContentLoaded', () => {
         heartbeatBtn.classList.add('pulse-animation');
         heartbeatMsg.classList.add('show');
 
-        // Play heartbeat audio
+        // Play heartbeat audio and increase its volume
+        heartbeatSound.volume = 1.0;
         heartbeatSound.currentTime = 0; // reset if clicked rapidly
         heartbeatSound.play().catch(e => console.log('Heartbeat audio failed', e));
 
+        // Slightly lower bg-music so she can hear the heartbeat
+        if (isPlaying) {
+            bgMusic.volume = 0.2;
+        }
+
         if (navigator.vibrate) navigator.vibrate([100, 50, 100, 50, 100]);
-        setTimeout(() => heartbeatBtn.classList.remove('pulse-animation'), 3000);
+
+        setTimeout(() => {
+            heartbeatBtn.classList.remove('pulse-animation');
+            if (isPlaying) {
+                bgMusic.volume = 1.0; // Restore bg-music volume
+            }
+        }, 3000);
     });
 
     // Virtual Hug
@@ -187,21 +199,29 @@ document.addEventListener('DOMContentLoaded', () => {
         typeWriter();
     }
 
-    // 4. Future Countdown (Fake demo countdown - e.g. 30 days from now)
-    const countdownDate = new Date();
-    countdownDate.setDate(countdownDate.getDate() + 30);
+    // 4. Future Countdown — set your real reunion/meetup date here!
+    // Format: new Date('YYYY-MM-DDTHH:MM:SS') — change this to your actual date 💛
+    const countdownDate = new Date('2026-06-01T00:00:00');
 
     function updateCountdown() {
         const now = new Date().getTime();
         const distance = countdownDate - now;
 
+        if (distance <= 0) {
+            // Countdown reached! Show celebration message
+            document.getElementById('countdown').innerHTML = "<p style='font-size:1.5rem;color:#ffc2d1;'>The wait is finally over! 🎉</p>";
+            return;
+        }
+
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById("days").innerText = days.toString().padStart(2, '0');
-        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
-        document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+        document.getElementById('days').innerText = days.toString().padStart(2, '0');
+        document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
     }
 
     setInterval(updateCountdown, 1000);
